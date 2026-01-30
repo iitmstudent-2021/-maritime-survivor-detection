@@ -1,10 +1,19 @@
-# Survivor Detection Challenge
+# Maritime Survivor Detection Challenge
 
-## 🎯 Challenge Overview
-Binary classification competition to predict passenger survival from a maritime incident using historical data with real-world complexities (Gaussian noise, missing data, obfuscated features).
+## 🎯 Project Overview
+This project is my solution for the **IIT Madras BS Data Science Competition** - a binary classification challenge to predict passenger survival from a maritime incident. The competition tests skills in handling real-world data complexities including Gaussian noise, missing values, and obfuscated features.
+
+**Competition Link**: [Survival Detection on Kaggle](https://www.kaggle.com/competitions/survival-detection/leaderboard)
+
+**Key Challenge**: Predict survival outcomes for 181 test passengers based on patterns learned from 714 training examples, achieving the highest accuracy on a private test set.
 
 ## 📊 Evaluation Metric
 **Accuracy**: `(TP + TN) / (TP + TN + FP + FN)`
+
+## 🏆 Results
+- **Best Model**: Random Forest Classifier with optimized hyperparameters
+- **Validation Accuracy**: ~85%
+- **Key Techniques**: Feature engineering, ensemble methods, rule-based overrides
 
 ## 🚀 Quick Start
 
