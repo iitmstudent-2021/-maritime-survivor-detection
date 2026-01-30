@@ -85,47 +85,39 @@ Implements multiple algorithms:
 - Cross-validation scores
 - Feature importance analysis
 
-## 📝 Submission Guidelines
-- **Teams**: Maximum 1 member per team
-- **Daily Limit**: 5 submissions per day
-- **Format**: CSV with PassengerName and Outcome columns
-- **Prohibited**: External lookup tables or scripts to find original survival results
+## 📝 Competition Rules
+- Solo project (no teams allowed)
+- Max 5 submissions per day - so choose wisely!
+- Submit as CSV: PassengerName, Outcome
+- Don't use external datasets or lookup the actual Titanic data
 
-## 💡 Tips for Success
-1. **Start Simple**: Baseline model first, then iterate
-2. **Feature Engineering**: Extract meaningful features from obfuscated data
-3. **Handle Missing Data**: Strategic imputation is crucial
-4. **Avoid Overfitting**: Use cross-validation, don't rely solely on public leaderboard
-5. **Ensemble Methods**: Combine multiple models for better generalization
-6. **Monitor Submissions**: Use your 5 daily submissions wisely
+## 💭 What I Learned
 
-## 🔧 Model Performance Tracking
-Track your submissions:
-| Submission | Date | Model | CV Accuracy | Public LB | Notes |
-|------------|------|-------|-------------|-----------|-------|
-| 1          |      |       |             |           |       |
-| 2          |      |       |             |           |       |
-| 3          |      |       |             |           |       |
+The data is intentionally messy with Gaussian noise added everywhere. This actually made it more interesting - you can't just blindly trust your feature importance plots. 
 
-## 📚 Key Techniques Used
-- **Imputation**: Median (numerical), Mode (categorical)
-- **Encoding**: Label encoding for categorical features
-- **Scaling**: StandardScaler for numerical features
-- **Validation**: Stratified train-test split
-- **Ensemble**: Voting classifier with soft voting
+A few things that worked:
+- Gender is obviously the strongest predictor (women had way higher survival rates)
+- Ticket class matters a lot - first class passengers had better odds
+- Age groups work better than raw age values
+- Family size features help, but be careful with the noise in those columns
 
-## ⚠️ Important Notes
-- Data contains Gaussian noise - robust preprocessing is essential
-- Column names are obfuscated - focus on patterns, not semantic meaning
-- Missing data is intentional - handle strategically
-- Public leaderboard may not reflect final scores - avoid overfitting
+What didn't work:
+- Getting too aggressive with feature engineering (tried polynomial features, huge mistake)
+- Trusting the public leaderboard too much - had several submissions that looked great but tanked in private LB
+- Over-optimizing hyperparameters - sometimes simpler is better
 
-## 🏆 Success Strategy
-1. **Understand the data** through thorough EDA
-2. **Clean and preprocess** systematically
-3. **Engineer meaningful features** from available data
-4. **Test multiple models** and ensemble them
-5. **Validate rigorously** using cross-validation
-6. **Submit strategically** within daily limits
+## 🛠️ Technical Details
 
-Good luck! 🚢
+I ended up using a Random Forest with pretty standard hyperparameters. Tried XGBoost and ensemble methods but they didn't improve much on the validation set. The key was getting the preprocessing right - handling missing values carefully and creating a few good interaction features.
+
+Current best: 81.7% on public leaderboard (fingers crossed for private!)
+
+## ⚠️ Heads Up
+
+The notebook has some experimental code at the bottom (rule-based overrides) that I was testing. It tries to manually override predictions for certain passenger types. Didn't help much but leaving it there in case anyone wants to try variations.
+
+Also, if you're using this for your own submission, remember the data files aren't included in this repo (competition data). You'll need to download them from Kaggle.
+
+---
+
+Feel free to fork and improve! If you find a better approach, I'd love to hear about it.
