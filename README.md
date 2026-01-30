@@ -17,10 +17,13 @@ This project is my solution for the **IIT Madras BS Data Science Competition** -
 
 ## 🚀 Quick Start
 
-### 1. Setup
-Ensure you have the required data files:
-- `maritime_train.csv` - Training data with outcome labels
-- `maritime_test.csv` - Test data for predictions
+### 1. Data Files
+The `survival-detection/` folder contains the competition data:
+- `maritime_train.csv` - 714 passengers with survival outcomes (training data)
+- `maritime_test.csv` - 181 passengers for prediction (test data)  
+- `maritime_sample_submission.csv` - Example submission format
+
+Note: The data has intentional Gaussian noise added to features and some columns are obfuscated to make it more challenging.
 
 ### 2. Install Dependencies
 ```bash
@@ -28,7 +31,7 @@ pip install pandas numpy matplotlib seaborn scikit-learn
 ```
 
 ### 3. Run the Analysis
-Open and run `survivor_detection.ipynb` in Jupyter Notebook or VS Code
+Open and run `data_exploration.ipynb` in Jupyter Notebook or VS Code
 
 ### 4. Generate Submission
 The notebook will create `submission.csv` with the required format:
@@ -41,11 +44,14 @@ PassengerName, Outcome
 ## 📁 Project Structure
 ```
 .
-├── survivor_detection.ipynb    # Main analysis notebook
-├── maritime_train.csv          # Training data (place here)
-├── maritime_test.csv           # Test data (place here)
-├── submission.csv              # Generated predictions
-└── README.md                   # This file
+├── data_exploration.ipynb      # Main analysis notebook with EDA + modeling
+├── survival-detection/         # Competition data folder
+│   ├── maritime_train.csv      # Training data (714 passengers)
+│   ├── maritime_test.csv       # Test data (181 passengers)
+│   └── maritime_sample_submission.csv
+├── requirements.txt            # Python dependencies
+├── .gitignore                  # Git ignore rules
+└── README.md                   # You're reading it!
 ```
 
 ## 🔍 Solution Approach
@@ -116,7 +122,7 @@ Current best: 81.7% on public leaderboard (fingers crossed for private!)
 
 The notebook has some experimental code at the bottom (rule-based overrides) that I was testing. It tries to manually override predictions for certain passenger types. Didn't help much but leaving it there in case anyone wants to try variations.
 
-Also, if you're using this for your own submission, remember the data files aren't included in this repo (competition data). You'll need to download them from Kaggle.
+Also, if you're using this for your own submission, remember the data files are in the `survival-detection/` folder. Just run the notebook and it'll load them automatically.
 
 ---
 

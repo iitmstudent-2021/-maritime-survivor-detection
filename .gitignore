@@ -28,9 +28,8 @@ wheels/
 .ipynb_checkpoints
 */.ipynb_checkpoints/*
 
-# Data files - exclude all CSV files (competition data)
-*.csv
-survival-detection/
+# Data files - exclude generated CSV files
+submission*.csv
 
 # Exclude experiment/duplicate files
 advanced_strategies.py
